@@ -57,15 +57,52 @@ var Telegram = {
   }
 };
 
+function formatIndonesianDate(dateStr) {
+  try {
+    var date = new Date(dateStr);
+    
+    if (isNaN(date.getTime())) {
+      var matches = dateStr.match(/(\d{4})-(\d{2})-(\d{2})[T\s](\d{2}):(\d{2}):(\d{2})/);
+      if (matches) {
+        var year = parseInt(matches[1]);
+        var month = parseInt(matches[2]) - 1;
+        var day = parseInt(matches[3]);
+        var hour = parseInt(matches[4]);
+        var minute = parseInt(matches[5]);
+        var second = parseInt(matches[6]);
+        
+        date = new Date(year, month, day, hour, minute, second);
+      } else {
+        date = new Date();
+      }
+    }
+    
+    var months = [
+      "Januari", "Februari", "Maret", "April", "Mei", "Juni",
+      "Juli", "Agustus", "September", "Oktober", "November", "Desember"
+    ];
+    
+    var day = date.getDate();
+    var month = months[date.getMonth()];
+    var year = date.getFullYear();
+    var hour = (date.getHours() < 10 ? "0" : "") + date.getHours();
+    var minute = (date.getMinutes() < 10 ? "0" : "") + date.getMinutes();
+    
+    return day + " " + month + " " + year + ", " + hour + ":" + minute;
+  } catch (e) {
+    Zabbix.log(3, '[Telegram Webhook] Error formatting date: ' + e);
+    return "Tanggal tidak valid";
+  }
+}
+
 function formatTelegramMessage(csvData) {
   try {
       var values = csvData.split(';');
       var message = "";
       
-      var timestamp = values[0];
-      var date = new Date(timestamp);
-
-      message += date.toLocaleDateString()+ " " + date.toLocaleTimeString() + "\n\n";
+      var timestamp = new Date();
+      var formattedDate = formatIndonesianDate(new Date(timestamp.getTime() + (7 * 60 * 60 * 1000)));
+      message += formattedDate + "\n\n";
       
       message += "Penggunaan CPU: " + values[1] + "%\n";
       message += "Penggunaan Memory: " + values[12] + "%\n\n";
@@ -82,12 +119,19 @@ function formatTelegramMessage(csvData) {
       message += "\n";
       
       message += "Penggunaan Proses Tertinggi pada Memory:\n";
+      var hasMemProcesses = false;
       for (var i = 1; i <= 5; i++) {
           var procNameIndex = 13 + (i-1)*2;
           var procUsageIndex = 14 + (i-1)*2;
-          if (procNameIndex < values.length && procUsageIndex < values.length) {
+          if (procNameIndex < values.length && procUsageIndex < values.length && 
+              values[procNameIndex] && values[procUsageIndex]) {
               message += i + ". " + values[procNameIndex] + " = " + values[procUsageIndex] + "%\n";
+              hasMemProcesses = true;
           }
+      }
+      
+      if (!hasMemProcesses) {
+          message += "Tidak ada data proses Memory\n";
       }
       
       message += "\n";
@@ -123,7 +167,7 @@ try {
   
   Telegram.to = params.To;
   
-  var formattedMessage = formatTelegramMessage(params.Message);
+  var formattedMessage = "Terdeteksi Anomali\n\n" + formatTelegramMessage(params.Message);
   Telegram.message = formattedMessage;
   
   if (Telegram.parse_mode !== null) {

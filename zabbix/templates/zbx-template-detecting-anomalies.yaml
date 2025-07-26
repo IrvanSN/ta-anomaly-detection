@@ -1,0 +1,953 @@
+zabbix_export:
+  version: '7.2'
+  template_groups:
+    - uuid: 846977d1dfed4968bc5f8bdb363285bc
+      name: 'Templates/Operating systems'
+  templates:
+    - uuid: 47eb213dc3c44d5982d6b8faef26e779
+      template: 'Host Anomaly Detection - Detecting Anomalies'
+      name: 'Host Anomaly Detection - Detecting Anomalies'
+      groups:
+        - name: 'Templates/Operating systems'
+      items:
+        - uuid: 06d399d9970b4e1cb5ec74ee0645bc66
+          name: Anomaly
+          type: DEPENDENT
+          key: anomaly_detector.anomaly
+          trends: '0'
+          preprocessing:
+            - type: CSV_TO_JSON
+              parameters:
+                - ;
+                - '"'
+                - '0'
+            - type: JSONPATH
+              parameters:
+                - '$[0].26'
+          master_item:
+            key: 'system.run[sudo python3 /etc/zabbix/templates/host_anomaly_detection/anomaly_detector.py]'
+        - uuid: 1b67d797566545348107b2ea3c6e6efb
+          name: 'CPU Process Top 1 Name'
+          type: DEPENDENT
+          key: anomaly_detector.cpu.process.top.1.name
+          value_type: TEXT
+          preprocessing:
+            - type: CSV_TO_JSON
+              parameters:
+                - ;
+                - '"'
+                - '0'
+            - type: JSONPATH
+              parameters:
+                - '$[0].3'
+          master_item:
+            key: 'system.run[sudo python3 /etc/zabbix/templates/host_anomaly_detection/anomaly_detector.py]'
+        - uuid: 4cfa7a804c5c42fc97b2eb679b90d9c0
+          name: 'CPU Process Top 1 Usage'
+          type: DEPENDENT
+          key: anomaly_detector.cpu.process.top.1.usage
+          value_type: FLOAT
+          units: '%'
+          preprocessing:
+            - type: CSV_TO_JSON
+              parameters:
+                - ;
+                - '"'
+                - '0'
+            - type: JSONPATH
+              parameters:
+                - '$[0].4'
+          master_item:
+            key: 'system.run[sudo python3 /etc/zabbix/templates/host_anomaly_detection/anomaly_detector.py]'
+        - uuid: f01707011f0349899ece507dbb370ffb
+          name: 'CPU Process Top 2 Name'
+          type: DEPENDENT
+          key: anomaly_detector.cpu.process.top.2.name
+          value_type: TEXT
+          preprocessing:
+            - type: CSV_TO_JSON
+              parameters:
+                - ;
+                - '"'
+                - '0'
+            - type: JSONPATH
+              parameters:
+                - '$[0].5'
+          master_item:
+            key: 'system.run[sudo python3 /etc/zabbix/templates/host_anomaly_detection/anomaly_detector.py]'
+        - uuid: 6bbd7d95170f4279b844e9c3e8ec746e
+          name: 'CPU Process Top 2 Usage'
+          type: DEPENDENT
+          key: anomaly_detector.cpu.process.top.2.usage
+          value_type: FLOAT
+          units: '%'
+          preprocessing:
+            - type: CSV_TO_JSON
+              parameters:
+                - ;
+                - '"'
+                - '0'
+            - type: JSONPATH
+              parameters:
+                - '$[0].6'
+          master_item:
+            key: 'system.run[sudo python3 /etc/zabbix/templates/host_anomaly_detection/anomaly_detector.py]'
+        - uuid: 730fc864e286440fa828d4bdc2bbdf89
+          name: 'CPU Process Top 3 Name'
+          type: DEPENDENT
+          key: anomaly_detector.cpu.process.top.3.name
+          value_type: TEXT
+          preprocessing:
+            - type: CSV_TO_JSON
+              parameters:
+                - ;
+                - '"'
+                - '0'
+            - type: JSONPATH
+              parameters:
+                - '$[0].7'
+          master_item:
+            key: 'system.run[sudo python3 /etc/zabbix/templates/host_anomaly_detection/anomaly_detector.py]'
+        - uuid: 4199bad4f92a4525ab7859fe19182e07
+          name: 'CPU Process Top 3 Usage'
+          type: DEPENDENT
+          key: anomaly_detector.cpu.process.top.3.usage
+          value_type: FLOAT
+          units: '%'
+          preprocessing:
+            - type: CSV_TO_JSON
+              parameters:
+                - ;
+                - '"'
+                - '0'
+            - type: JSONPATH
+              parameters:
+                - '$[0].8'
+          master_item:
+            key: 'system.run[sudo python3 /etc/zabbix/templates/host_anomaly_detection/anomaly_detector.py]'
+        - uuid: 54f9a0f41f394c62807ef1ccb1e8b59f
+          name: 'CPU Process Top 4 Name'
+          type: DEPENDENT
+          key: anomaly_detector.cpu.process.top.4.name
+          value_type: TEXT
+          preprocessing:
+            - type: CSV_TO_JSON
+              parameters:
+                - ;
+                - '"'
+                - '0'
+            - type: JSONPATH
+              parameters:
+                - '$[0].9'
+          master_item:
+            key: 'system.run[sudo python3 /etc/zabbix/templates/host_anomaly_detection/anomaly_detector.py]'
+        - uuid: 6dc9ce01950746678f318c6b107ca52f
+          name: 'CPU Process Top 4 Usage'
+          type: DEPENDENT
+          key: anomaly_detector.cpu.process.top.4.usage
+          value_type: FLOAT
+          units: '%'
+          preprocessing:
+            - type: CSV_TO_JSON
+              parameters:
+                - ;
+                - '"'
+                - '0'
+            - type: JSONPATH
+              parameters:
+                - '$[0].10'
+          master_item:
+            key: 'system.run[sudo python3 /etc/zabbix/templates/host_anomaly_detection/anomaly_detector.py]'
+        - uuid: b53a48df1e0b42b7bfa6b205f74862cb
+          name: 'CPU Process Top 5 Name'
+          type: DEPENDENT
+          key: anomaly_detector.cpu.process.top.5.name
+          value_type: TEXT
+          preprocessing:
+            - type: CSV_TO_JSON
+              parameters:
+                - ;
+                - '"'
+                - '0'
+            - type: JSONPATH
+              parameters:
+                - '$[0].11'
+          master_item:
+            key: 'system.run[sudo python3 /etc/zabbix/templates/host_anomaly_detection/anomaly_detector.py]'
+        - uuid: 546ffb316fe5490ab2fb2fc8d6c0b445
+          name: 'CPU Process Top 5 Usage'
+          type: DEPENDENT
+          key: anomaly_detector.cpu.process.top.5.usage
+          value_type: FLOAT
+          units: '%'
+          preprocessing:
+            - type: CSV_TO_JSON
+              parameters:
+                - ;
+                - '"'
+                - '0'
+            - type: JSONPATH
+              parameters:
+                - '$[0].12'
+          master_item:
+            key: 'system.run[sudo python3 /etc/zabbix/templates/host_anomaly_detection/anomaly_detector.py]'
+        - uuid: 79df5c17a77e4f18b94ae0db2dbda4aa
+          name: 'CPU Usage'
+          type: DEPENDENT
+          key: anomaly_detector.cpu.usage
+          units: '%'
+          preprocessing:
+            - type: CSV_TO_JSON
+              parameters:
+                - ;
+                - '"'
+                - '0'
+            - type: JSONPATH
+              parameters:
+                - '$[0].2'
+          master_item:
+            key: 'system.run[sudo python3 /etc/zabbix/templates/host_anomaly_detection/anomaly_detector.py]'
+        - uuid: 7e625976a4564eca98861e083bb35a5f
+          name: 'MEM Process Top 1 Name'
+          type: DEPENDENT
+          key: anomaly_detector.mem.process.top.1.name
+          value_type: TEXT
+          preprocessing:
+            - type: CSV_TO_JSON
+              parameters:
+                - ;
+                - '"'
+                - '0'
+            - type: JSONPATH
+              parameters:
+                - '$[0].14'
+          master_item:
+            key: 'system.run[sudo python3 /etc/zabbix/templates/host_anomaly_detection/anomaly_detector.py]'
+        - uuid: 5e63667c98b44e00807a43db8ffa7920
+          name: 'MEM Process Top 1 Usage'
+          type: DEPENDENT
+          key: anomaly_detector.mem.process.top.1.usage
+          value_type: FLOAT
+          units: '%'
+          preprocessing:
+            - type: CSV_TO_JSON
+              parameters:
+                - ;
+                - '"'
+                - '0'
+            - type: JSONPATH
+              parameters:
+                - '$[0].15'
+          master_item:
+            key: 'system.run[sudo python3 /etc/zabbix/templates/host_anomaly_detection/anomaly_detector.py]'
+        - uuid: 9500bf7039e1451f819f0216311e1a8d
+          name: 'MEM Process Top 2 Name'
+          type: DEPENDENT
+          key: anomaly_detector.mem.process.top.2.name
+          value_type: TEXT
+          preprocessing:
+            - type: CSV_TO_JSON
+              parameters:
+                - ;
+                - '"'
+                - '0'
+            - type: JSONPATH
+              parameters:
+                - '$[0].16'
+          master_item:
+            key: 'system.run[sudo python3 /etc/zabbix/templates/host_anomaly_detection/anomaly_detector.py]'
+        - uuid: 25f757a1fffb4e34bde3a04481314d6b
+          name: 'MEM Process Top 2 Usage'
+          type: DEPENDENT
+          key: anomaly_detector.mem.process.top.2.usage
+          value_type: FLOAT
+          units: '%'
+          preprocessing:
+            - type: CSV_TO_JSON
+              parameters:
+                - ;
+                - '"'
+                - '0'
+            - type: JSONPATH
+              parameters:
+                - '$[0].17'
+          master_item:
+            key: 'system.run[sudo python3 /etc/zabbix/templates/host_anomaly_detection/anomaly_detector.py]'
+        - uuid: f6c004ce46bb42c8b39882d2f6cd5787
+          name: 'MEM Process Top 3 Name'
+          type: DEPENDENT
+          key: anomaly_detector.mem.process.top.3.name
+          value_type: TEXT
+          preprocessing:
+            - type: CSV_TO_JSON
+              parameters:
+                - ;
+                - '"'
+                - '0'
+            - type: JSONPATH
+              parameters:
+                - '$[0].18'
+          master_item:
+            key: 'system.run[sudo python3 /etc/zabbix/templates/host_anomaly_detection/anomaly_detector.py]'
+        - uuid: b7bff8f4da8641828bbf90cea61ac1cc
+          name: 'MEM Process Top 3 Usage'
+          type: DEPENDENT
+          key: anomaly_detector.mem.process.top.3.usage
+          value_type: FLOAT
+          units: '%'
+          preprocessing:
+            - type: CSV_TO_JSON
+              parameters:
+                - ;
+                - '"'
+                - '0'
+            - type: JSONPATH
+              parameters:
+                - '$[0].19'
+          master_item:
+            key: 'system.run[sudo python3 /etc/zabbix/templates/host_anomaly_detection/anomaly_detector.py]'
+        - uuid: c5eaab343b0d43909eafcfcdd7126d03
+          name: 'MEM Process Top 4 Name'
+          type: DEPENDENT
+          key: anomaly_detector.mem.process.top.4.name
+          value_type: TEXT
+          preprocessing:
+            - type: CSV_TO_JSON
+              parameters:
+                - ;
+                - '"'
+                - '0'
+            - type: JSONPATH
+              parameters:
+                - '$[0].20'
+          master_item:
+            key: 'system.run[sudo python3 /etc/zabbix/templates/host_anomaly_detection/anomaly_detector.py]'
+        - uuid: 5174dec7a2114c36ac2923b7008475b7
+          name: 'MEM Process Top 4 Usage'
+          type: DEPENDENT
+          key: anomaly_detector.mem.process.top.4.usage
+          value_type: FLOAT
+          units: '%'
+          preprocessing:
+            - type: CSV_TO_JSON
+              parameters:
+                - ;
+                - '"'
+                - '0'
+            - type: JSONPATH
+              parameters:
+                - '$[0].21'
+          master_item:
+            key: 'system.run[sudo python3 /etc/zabbix/templates/host_anomaly_detection/anomaly_detector.py]'
+        - uuid: 52834c54c93e44b3877f50c9eeb9b854
+          name: 'MEM Process Top 5 Name'
+          type: DEPENDENT
+          key: anomaly_detector.mem.process.top.5.name
+          value_type: TEXT
+          preprocessing:
+            - type: CSV_TO_JSON
+              parameters:
+                - ;
+                - '"'
+                - '0'
+            - type: JSONPATH
+              parameters:
+                - '$[0].22'
+          master_item:
+            key: 'system.run[sudo python3 /etc/zabbix/templates/host_anomaly_detection/anomaly_detector.py]'
+        - uuid: ff16f617ecae42f5a094256d273a6ee7
+          name: 'MEM Process Top 5 Usage'
+          type: DEPENDENT
+          key: anomaly_detector.mem.process.top.5.usage
+          value_type: FLOAT
+          units: '%'
+          preprocessing:
+            - type: CSV_TO_JSON
+              parameters:
+                - ;
+                - '"'
+                - '0'
+            - type: JSONPATH
+              parameters:
+                - '$[0].23'
+          master_item:
+            key: 'system.run[sudo python3 /etc/zabbix/templates/host_anomaly_detection/anomaly_detector.py]'
+        - uuid: 98d2d06c405540fba83eaa2f5712880a
+          name: 'MEM Usage'
+          type: DEPENDENT
+          key: anomaly_detector.mem.usage
+          value_type: FLOAT
+          units: '%'
+          preprocessing:
+            - type: CSV_TO_JSON
+              parameters:
+                - ;
+                - '"'
+                - '0'
+            - type: JSONPATH
+              parameters:
+                - '$[0].13'
+          master_item:
+            key: 'system.run[sudo python3 /etc/zabbix/templates/host_anomaly_detection/anomaly_detector.py]'
+        - uuid: f64b73a77b934d8c8dec43ea9a506e19
+          name: 'Nginx Active Connections'
+          type: DEPENDENT
+          key: anomaly_detector.nginx.active_connections
+          preprocessing:
+            - type: CSV_TO_JSON
+              parameters:
+                - ;
+                - '"'
+                - '0'
+            - type: JSONPATH
+              parameters:
+                - '$[0].24'
+          master_item:
+            key: 'system.run[sudo python3 /etc/zabbix/templates/host_anomaly_detection/anomaly_detector.py]'
+        - uuid: 92293ea53a7840f0b85afe5c9ea6f616
+          name: 'Nginx Request per Second'
+          type: DEPENDENT
+          key: anomaly_detector.nginx.request_per_second
+          value_type: FLOAT
+          preprocessing:
+            - type: CSV_TO_JSON
+              parameters:
+                - ;
+                - '"'
+                - '0'
+            - type: JSONPATH
+              parameters:
+                - '$[0].25'
+          master_item:
+            key: 'system.run[sudo python3 /etc/zabbix/templates/host_anomaly_detection/anomaly_detector.py]'
+        - uuid: 7fb8c6b9669949f182d56a69f42e04db
+          name: Timestamp
+          type: DEPENDENT
+          key: anomaly_detector.timestamp
+          value_type: TEXT
+          preprocessing:
+            - type: CSV_TO_JSON
+              parameters:
+                - ;
+                - '"'
+                - '0'
+            - type: JSONPATH
+              parameters:
+                - '$[0].1'
+          master_item:
+            key: 'system.run[sudo python3 /etc/zabbix/templates/host_anomaly_detection/anomaly_detector.py]'
+        - uuid: a98ef2e2f7884c5b84085e42c295ff4a
+          name: 'Python Scipt to Scrape'
+          key: 'system.run[sudo python3 /etc/zabbix/templates/host_anomaly_detection/anomaly_detector.py]'
+          delay: 15s
+          value_type: TEXT
+          triggers:
+            - uuid: 8a27b267b61b4f6fbe10d75da9bb7aab
+              expression: 'right(last(/Host Anomaly Detection - Detecting Anomalies/system.run[sudo python3 /etc/zabbix/templates/host_anomaly_detection/anomaly_detector.py]),1)=1'
+              recovery_mode: NONE
+              name: 'Anomaly Detected'
+              priority: HIGH
+              type: MULTIPLE
+              manual_close: 'YES'
+      dashboards:
+        - uuid: f23c974d495741b6ad591971ead6c610
+          name: 'VM Monitoring'
+          pages:
+            - widgets:
+                - type: problemsbysv
+                  name: 'Total Anomaly Detected'
+                  width: '18'
+                  height: '3'
+                  fields:
+                    - type: STRING
+                      name: reference
+                      value: ZKVAW
+                    - type: INTEGER
+                      name: severities.0
+                      value: '4'
+                    - type: INTEGER
+                      name: show_opdata
+                      value: '2'
+                    - type: INTEGER
+                      name: show_suppressed
+                      value: '1'
+                    - type: INTEGER
+                      name: show_timeline
+                      value: '0'
+                - type: tophosts
+                  name: 'Top hosts by CPU Usage %'
+                  'y': '3'
+                  width: '36'
+                  height: '4'
+                  fields:
+                    - type: INTEGER
+                      name: column
+                      value: '1'
+                    - type: INTEGER
+                      name: columns.0.data
+                      value: '2'
+                    - type: STRING
+                      name: columns.0.item
+                      value: ''
+                    - type: STRING
+                      name: columns.0.name
+                      value: Host
+                    - type: STRING
+                      name: columns.0.text
+                      value: ''
+                    - type: INTEGER
+                      name: columns.1.data
+                      value: '1'
+                    - type: INTEGER
+                      name: columns.1.display
+                      value: '3'
+                    - type: STRING
+                      name: columns.1.item
+                      value: 'CPU Usage'
+                    - type: STRING
+                      name: columns.1.max
+                      value: '100'
+                    - type: STRING
+                      name: columns.1.min
+                      value: '0'
+                    - type: STRING
+                      name: columns.1.name
+                      value: 'Load in %'
+                    - type: STRING
+                      name: columns.1.text
+                      value: ''
+                    - type: INTEGER
+                      name: columns.2.data
+                      value: '1'
+                    - type: INTEGER
+                      name: columns.2.display
+                      value: '6'
+                    - type: STRING
+                      name: columns.2.item
+                      value: 'CPU Usage'
+                    - type: STRING
+                      name: columns.2.name
+                      value: 'Load avg'
+                    - type: STRING
+                      name: columns.2.text
+                      value: ''
+                    - type: INTEGER
+                      name: columns.3.data
+                      value: '1'
+                    - type: INTEGER
+                      name: columns.3.display_value_as
+                      value: '1'
+                    - type: STRING
+                      name: columns.3.item
+                      value: 'CPU Process Top 1 Name'
+                    - type: STRING
+                      name: columns.3.name
+                      value: 'Top 1 CPU Process Name'
+                    - type: STRING
+                      name: columns.3.text
+                      value: ''
+                    - type: INTEGER
+                      name: columns.4.data
+                      value: '1'
+                    - type: STRING
+                      name: columns.4.item
+                      value: 'CPU Process Top 1 Usage'
+                    - type: STRING
+                      name: columns.4.name
+                      value: 'Top 1 CPU Process Usage'
+                    - type: STRING
+                      name: columns.4.text
+                      value: ''
+                    - type: INTEGER
+                      name: columns.5.data
+                      value: '1'
+                    - type: INTEGER
+                      name: columns.5.display_value_as
+                      value: '1'
+                    - type: STRING
+                      name: columns.5.item
+                      value: 'CPU Process Top 2 Name'
+                    - type: STRING
+                      name: columns.5.name
+                      value: 'Top 2 CPU Process Name'
+                    - type: STRING
+                      name: columns.5.text
+                      value: ''
+                    - type: INTEGER
+                      name: columns.6.data
+                      value: '1'
+                    - type: STRING
+                      name: columns.6.item
+                      value: 'CPU Process Top 2 Usage'
+                    - type: STRING
+                      name: columns.6.name
+                      value: 'Top 2 CPU Process Usage'
+                    - type: STRING
+                      name: columns.6.text
+                      value: ''
+                    - type: INTEGER
+                      name: columns.7.data
+                      value: '1'
+                    - type: INTEGER
+                      name: columns.7.display_value_as
+                      value: '1'
+                    - type: STRING
+                      name: columns.7.item
+                      value: 'CPU Process Top 3 Name'
+                    - type: STRING
+                      name: columns.7.name
+                      value: 'Top 3 CPU Process Name'
+                    - type: STRING
+                      name: columns.7.text
+                      value: ''
+                    - type: INTEGER
+                      name: columns.8.data
+                      value: '1'
+                    - type: STRING
+                      name: columns.8.item
+                      value: 'CPU Process Top 3 Usage'
+                    - type: STRING
+                      name: columns.8.name
+                      value: 'Top 3 CPU Process Usage'
+                    - type: STRING
+                      name: columns.8.text
+                      value: ''
+                    - type: INTEGER
+                      name: columns.9.data
+                      value: '1'
+                    - type: INTEGER
+                      name: columns.9.display_value_as
+                      value: '1'
+                    - type: STRING
+                      name: columns.9.item
+                      value: 'CPU Process Top 4 Name'
+                    - type: STRING
+                      name: columns.9.name
+                      value: 'Top 4 CPU Process Name'
+                    - type: STRING
+                      name: columns.9.text
+                      value: ''
+                    - type: INTEGER
+                      name: columns.10.data
+                      value: '1'
+                    - type: STRING
+                      name: columns.10.item
+                      value: 'CPU Process Top 4 Usage'
+                    - type: STRING
+                      name: columns.10.name
+                      value: 'Top 4 CPU Process Usage'
+                    - type: STRING
+                      name: columns.10.text
+                      value: ''
+                    - type: INTEGER
+                      name: columns.11.data
+                      value: '1'
+                    - type: INTEGER
+                      name: columns.11.display_value_as
+                      value: '1'
+                    - type: STRING
+                      name: columns.11.item
+                      value: 'CPU Process Top 5 Name'
+                    - type: STRING
+                      name: columns.11.name
+                      value: 'Top 5 CPU Process Name'
+                    - type: STRING
+                      name: columns.11.text
+                      value: ''
+                    - type: INTEGER
+                      name: columns.12.data
+                      value: '1'
+                    - type: STRING
+                      name: columns.12.item
+                      value: 'CPU Process Top 5 Usage'
+                    - type: STRING
+                      name: columns.12.name
+                      value: 'Top 5 CPU Process Usage'
+                    - type: STRING
+                      name: columns.12.text
+                      value: ''
+                    - type: STRING
+                      name: columnsthresholds.1.color.0
+                      value: AED581
+                    - type: STRING
+                      name: columnsthresholds.1.color.1
+                      value: FFD54F
+                    - type: STRING
+                      name: columnsthresholds.1.color.2
+                      value: FF8A65
+                    - type: STRING
+                      name: columnsthresholds.1.threshold.0
+                      value: '30'
+                    - type: STRING
+                      name: columnsthresholds.1.threshold.1
+                      value: '60'
+                    - type: STRING
+                      name: columnsthresholds.1.threshold.2
+                      value: '80'
+                    - type: STRING
+                      name: reference
+                      value: ELTII
+                - type: problems
+                  name: Anomaly
+                  'y': '7'
+                  width: '72'
+                  height: '8'
+                  fields:
+                    - type: STRING
+                      name: reference
+                      value: TBVGE
+                - type: tophosts
+                  name: 'Top nginx operation by RPS'
+                  x: '18'
+                  width: '18'
+                  height: '3'
+                  fields:
+                    - type: INTEGER
+                      name: columns.0.data
+                      value: '1'
+                    - type: STRING
+                      name: columns.0.item
+                      value: 'Nginx Active Connections'
+                    - type: STRING
+                      name: columns.0.name
+                      value: 'Active Connections'
+                    - type: STRING
+                      name: columns.0.text
+                      value: ''
+                    - type: INTEGER
+                      name: columns.1.data
+                      value: '1'
+                    - type: STRING
+                      name: columns.1.item
+                      value: 'Nginx Request per Second'
+                    - type: STRING
+                      name: columns.1.name
+                      value: 'Request per Second'
+                    - type: STRING
+                      name: columns.1.text
+                      value: ''
+                    - type: STRING
+                      name: reference
+                      value: ACVMB
+                - type: hostavail
+                  x: '36'
+                  width: '36'
+                  height: '3'
+                  fields:
+                    - type: INTEGER
+                      name: interface_type.0
+                      value: '1'
+                - type: tophosts
+                  name: 'Top hosts by MEM Usage %'
+                  x: '36'
+                  'y': '3'
+                  width: '36'
+                  height: '4'
+                  fields:
+                    - type: INTEGER
+                      name: column
+                      value: '1'
+                    - type: INTEGER
+                      name: columns.0.data
+                      value: '2'
+                    - type: STRING
+                      name: columns.0.item
+                      value: ''
+                    - type: STRING
+                      name: columns.0.name
+                      value: Host
+                    - type: STRING
+                      name: columns.0.text
+                      value: ''
+                    - type: INTEGER
+                      name: columns.1.data
+                      value: '1'
+                    - type: INTEGER
+                      name: columns.1.display
+                      value: '3'
+                    - type: STRING
+                      name: columns.1.item
+                      value: 'MEM Usage'
+                    - type: STRING
+                      name: columns.1.max
+                      value: '100'
+                    - type: STRING
+                      name: columns.1.min
+                      value: '0'
+                    - type: STRING
+                      name: columns.1.name
+                      value: 'Load in %'
+                    - type: STRING
+                      name: columns.1.text
+                      value: ''
+                    - type: INTEGER
+                      name: columns.2.data
+                      value: '1'
+                    - type: INTEGER
+                      name: columns.2.display
+                      value: '6'
+                    - type: STRING
+                      name: columns.2.item
+                      value: 'MEM Usage'
+                    - type: STRING
+                      name: columns.2.name
+                      value: 'Load avg'
+                    - type: STRING
+                      name: columns.2.text
+                      value: ''
+                    - type: INTEGER
+                      name: columns.3.data
+                      value: '1'
+                    - type: INTEGER
+                      name: columns.3.display_value_as
+                      value: '1'
+                    - type: STRING
+                      name: columns.3.item
+                      value: 'MEM Process Top 1 Name'
+                    - type: STRING
+                      name: columns.3.name
+                      value: 'Top 1 MEM Process Name'
+                    - type: STRING
+                      name: columns.3.text
+                      value: ''
+                    - type: INTEGER
+                      name: columns.4.data
+                      value: '1'
+                    - type: STRING
+                      name: columns.4.item
+                      value: 'MEM Process Top 1 Usage'
+                    - type: STRING
+                      name: columns.4.name
+                      value: 'Top 1 MEM Process Usage'
+                    - type: STRING
+                      name: columns.4.text
+                      value: ''
+                    - type: INTEGER
+                      name: columns.5.data
+                      value: '1'
+                    - type: INTEGER
+                      name: columns.5.display_value_as
+                      value: '1'
+                    - type: STRING
+                      name: columns.5.item
+                      value: 'MEM Process Top 2 Name'
+                    - type: STRING
+                      name: columns.5.name
+                      value: 'Top 2 MEM Process Name'
+                    - type: STRING
+                      name: columns.5.text
+                      value: ''
+                    - type: INTEGER
+                      name: columns.6.data
+                      value: '1'
+                    - type: STRING
+                      name: columns.6.item
+                      value: 'MEM Process Top 2 Usage'
+                    - type: STRING
+                      name: columns.6.name
+                      value: 'Top 2 MEM Process Usage'
+                    - type: STRING
+                      name: columns.6.text
+                      value: ''
+                    - type: INTEGER
+                      name: columns.7.data
+                      value: '1'
+                    - type: INTEGER
+                      name: columns.7.display_value_as
+                      value: '1'
+                    - type: STRING
+                      name: columns.7.item
+                      value: 'MEM Process Top 3 Name'
+                    - type: STRING
+                      name: columns.7.name
+                      value: 'Top 3 MEM Process Name'
+                    - type: STRING
+                      name: columns.7.text
+                      value: ''
+                    - type: INTEGER
+                      name: columns.8.data
+                      value: '1'
+                    - type: STRING
+                      name: columns.8.item
+                      value: 'MEM Process Top 3 Usage'
+                    - type: STRING
+                      name: columns.8.name
+                      value: 'Top 3 MEM Process Usage'
+                    - type: STRING
+                      name: columns.8.text
+                      value: ''
+                    - type: INTEGER
+                      name: columns.9.data
+                      value: '1'
+                    - type: INTEGER
+                      name: columns.9.display_value_as
+                      value: '1'
+                    - type: STRING
+                      name: columns.9.item
+                      value: 'MEM Process Top 4 Name'
+                    - type: STRING
+                      name: columns.9.name
+                      value: 'Top 4 MEM Process Name'
+                    - type: STRING
+                      name: columns.9.text
+                      value: ''
+                    - type: INTEGER
+                      name: columns.10.data
+                      value: '1'
+                    - type: STRING
+                      name: columns.10.item
+                      value: 'MEM Process Top 4 Usage'
+                    - type: STRING
+                      name: columns.10.name
+                      value: 'Top 4 MEM Process Usage'
+                    - type: STRING
+                      name: columns.10.text
+                      value: ''
+                    - type: INTEGER
+                      name: columns.11.data
+                      value: '1'
+                    - type: INTEGER
+                      name: columns.11.display_value_as
+                      value: '1'
+                    - type: STRING
+                      name: columns.11.item
+                      value: 'MEM Process Top 5 Name'
+                    - type: STRING
+                      name: columns.11.name
+                      value: 'Top 5 MEM Process Name'
+                    - type: STRING
+                      name: columns.11.text
+                      value: ''
+                    - type: INTEGER
+                      name: columns.12.data
+                      value: '1'
+                    - type: STRING
+                      name: columns.12.item
+                      value: 'MEM Process Top 5 Usage'
+                    - type: STRING
+                      name: columns.12.name
+                      value: 'Top 5 MEM Process Usage'
+                    - type: STRING
+                      name: columns.12.text
+                      value: ''
+                    - type: STRING
+                      name: columnsthresholds.1.color.0
+                      value: AED581
+                    - type: STRING
+                      name: columnsthresholds.1.color.1
+                      value: FFD54F
+                    - type: STRING
+                      name: columnsthresholds.1.color.2
+                      value: FF8A65
+                    - type: STRING
+                      name: columnsthresholds.1.threshold.0
+                      value: '30'
+                    - type: STRING
+                      name: columnsthresholds.1.threshold.1
+                      value: '60'
+                    - type: STRING
+                      name: columnsthresholds.1.threshold.2
+                      value: '80'
+                    - type: STRING
+                      name: reference
+                      value: GOYJG
